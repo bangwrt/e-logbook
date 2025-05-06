@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <title>E-Logbook</title>
+    <!-- Optional: Google Fonts for more attractive font -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>E-Logbook Application</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search data...">
+            <button id="searchBtn">Search</button>
+            <button id="viewAllBtn" onclick="window.location.href='/view_all'">View All</button>
+        </div>
+        <button id="addDataBtn" onclick="window.location.href='/input'">Add Data</button>
+    </header>
+    <main>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; margin-bottom: 20px;">
+            <!-- KIRI: Form Export -->
+            {% if user_login == 'admin' %}
+                <form id="exportForm" style="display: flex; align-items: flex-end; gap: 10px; margin: 0;">
+                    <label for="start_date">Start:</label>
+                    <input type="date" id="start_date" name="start_date" required>
+                    <label for="end_date">End:</label>
+                    <input type="date" id="end_date" name="end_date" required>
+                    <button type="submit" id="exportCsvBtn" style="padding: 5px 10px;">Export CSV</button>
+                    <button type="button" id="exportPdfBtn" style="padding: 5px 10px;">Export PDF</button>
+                </form>
+            {% else %}
+                <div></div>
+            {% endif %}
+
+            <!-- KANAN: Add User & Logout -->
+            <div style="display: flex; gap: 10px;">
+                {% if user_login == 'admin' %}
+                    <a href="/add_userlogin" style="padding: 5px 10px; background-color: green; color: white; text-decoration: none; text-align: center; display: inline-block;">Add User</a>
+                {% endif %}
+                <a href="/logout" style="padding: 5px 10px; background-color: red; color: white; text-decoration: none; text-align: center; display: inline-block;">Logout</a>
+            </div>
+        </div>
+        <script>
+        document.getElementById('exportPdfBtn').onclick = function() {
+            const form = document.getElementById('exportForm');
+            form.action = '/export_pdf';
+            form.method = 'GET';
+            form.submit();
+            setTimeout(() => { form.action = '/export'; }, 100);
+        };
+        document.getElementById('exportForm').onsubmit = function() {
+            this.action = '/export';
+            this.method = 'GET';
+        };
+        </script>
+
+        <div class="pagination">
+            {% if page > 1 %}
+                <a href="{{ url_for('index', page=page-1) }}">&laquo; Previous</a>
+            {% else %}
+                <span class="disabled">&laquo; Previous</span>
+            {% endif %}
+
+            {# Tampilkan maksimal 2 halaman sebelum dan sesudah halaman aktif #}
+            {% set start_page = page-2 if page-2 > 0 else 1 %}
+            {% set end_page = page+2 if page+2 <= total_pages else total_pages %}
+            {% if start_page > 1 %}
+                <a href="{{ url_for('index', page=1) }}">1</a>
+                {% if start_page > 2 %}
+                    <span>...</span>
+                {% endif %}
+            {% endif %}
+            {% for p in range(start_page, end_page+1) %}
+                {% if p == page %}
+                    <span class="active">{{ p }}</span>
+                {% else %}
+                    <a href="{{ url_for('index', page=p) }}">{{ p }}</a>
+                {% endif %}
+            {% endfor %}
+            {% if end_page < total_pages %}
+                {% if end_page < total_pages - 1 %}
+                    <span>...</span>
+                {% endif %}
+                <a href="{{ url_for('index', page=total_pages) }}">{{ total_pages }}</a>
+            {% endif %}
+
+            {% if page < total_pages %}
+                <a href="{{ url_for('index', page=page+1) }}">Next &raquo;</a>
+            {% else %}
+                <span class="disabled">Next &raquo;</span>
+            {% endif %}
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>ID</th>
+                    <th>Detail</th>
+                    <th>Note</th>
+                    <th>Created</th>
+                    <th>In</th>
+                    <th>Status</th>
+                    <th>By</th>
+                    <th>Completed</th>
+                    <th>Out</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="dataTableBody">
+                {% for row in data %}
+                <tr class="{% if row[6] == 'To Do' %}highlight-todo{% endif %}">
+                    <td>{{ row[0] }}</td> <!-- No -->
+                    <td>{{ row[1] }}</td> <!-- ID -->
+                    <td>{{ row[2] }}</td> <!-- Detail -->
+                    <td>{{ row[3] }}</td> <!-- Note -->
+                    <td>{{ row[4] }}</td> <!-- Created -->
+                    <td>{{ row[5] }}</td> <!-- In -->
+                    <td>{{ row[6] }}</td> <!-- Status -->
+                    <td>{{ row[7] }}</td> <!-- By -->
+                    <td>{{ row[8] }}</td> <!-- Completed -->
+                    <td>{{ row[9] }}</td> <!-- Out -->
+                    <td>
+                        <button onclick="window.location.href='/edit/{{ row[0] }}'">Edit</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    <div id="active-user" style="
+        position: fixed;
+        left: 20px;
+        bottom: 20px;
+        background: rgba(40,40,70,0.50);
+        color: #7ecbff;
+        padding: 14px 28px;
+        border-radius: 16px 16px 16px 0;
+        font-family: 'Caveat', 'Pacifico', cursive, 'Comic Sans MS', sans-serif;
+        font-size: 1.5rem;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+        z-index: 1000;
+        border: 2px solid #7ecbff;
+        text-shadow: 1px 2px 8px #232336;
+    ">
+        👤 User: {{ user_login|capitalize }}
+    </div>
+    <script src="../static/js/index.js"></script>
+</body>
+</html>
