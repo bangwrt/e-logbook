@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/edit.css') }}">
+</head>
+<body>
+    <h1>Edit Data</h1>
+
+    <!-- Form untuk edit data -->
+    <form id="edit-form" onsubmit="return false;">
+        <label>No.</label><br>
+        <input type="text" name="no" disabled><br><br>
+
+        <label>ID:</label><br>
+        <input type="text" name="id"><br><br>
+
+        <label>Detail:</label><br>
+        <input type="text" name="detail"><br><br>
+
+        <label>Note:</label><br>
+        <textarea name="note"></textarea><br><br>
+
+        <label>Created:</label><br>
+        <input type="date" name="created"><br><br>
+
+        <label>In:</label><br>
+        <input type="time" name="in_time"><br><br>
+
+        <label>Status:</label><br>
+        <select name="status">
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+        </select><br><br>
+
+        <label>By:</label><br>
+        <input type="text" name="by"><br><br>
+
+        <label>Completed:</label><br>
+        <input type="date" name="completed"><br><br>
+
+        <label>Out:</label><br>
+        <input type="time" name="out_time"><br><br>
+
+        <!-- Button Back and Submit -->
+        <button onclick="hideEditForm()">Back</button>
+        <button id="submit-edit">Submit</button>
+    </form>
+
+    <!-- JavaScript untuk menampilkan form tambah/edit data -->
+    <script src="{{ url_for('static', filename='js/edit.js') }}"></script>
+</body>
+</html>
+
