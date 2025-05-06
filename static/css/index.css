@@ -1,0 +1,188 @@
+/* Reset styles */
+body, h1, table, th, td, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e2f; /* Soft dark background */
+    color: #dcdcdc; /* Light gray text */
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Header styling */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #4CAF50; /* Soft green for the title */
+    margin-bottom: 10px;
+}
+
+.search-container {
+    display: flex;
+    gap: 2px; /* Tambahkan jarak antar elemen */
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #444; /* Dark border */
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #2e2e3e; /* Dark input background */
+    color: #dcdcdc; /* Light gray text */
+}
+
+.search-container input::placeholder {
+    color: #888; /* Soft gray placeholder */
+}
+
+.search-container button {
+    padding: 10px 15px;
+    background-color: #4CAF50; /* Soft green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+    background-color: #45a049; /* Slightly darker green */
+}
+
+#addDataBtn {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 10px 20px;
+    background-color: #007BFF; /* Soft blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#addDataBtn:hover {
+    background-color: #0056b3; /* Slightly darker blue */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #2e2e3e; /* Dark table background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+table thead {
+    background-color: #4CAF50; /* Soft green for header */
+    color: white;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #444; /* Dark border */
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #252533; /* Slightly lighter dark for alternating rows */
+}
+
+table tbody tr:hover {
+    background-color: #3a3a4d; /* Soft hover effect */
+}
+
+table button {
+    padding: 5px 10px;
+    background-color: #007BFF; /* Soft blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+table button:hover {
+    background-color: #0056b3; /* Slightly darker blue */
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4CAF50; /* Soft green scrollbar */
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #45a049; /* Slightly darker green */
+}
+
+/* Highlight Todo styling */
+.highlight-todo {
+    font-weight: bold;
+    color: #d4af37; /* Warna teks putih */
+    #background-color: #d4af37; /* Warna gold premium */
+    text-transform: uppercase; /* Huruf kapital */
+    border: 1px solid #b8860b; /* Border gold gelap */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+    padding: 5px; /* Spasi dalam */
+    border-radius: 5px; /* Sudut membulat */
+}
+
+/* Pagination styling */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin: 24px 0;
+}
+
+.pagination a, .pagination span {
+    padding: 6px 12px;
+    margin: 0 2px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #7ecbff;
+    border: 1px solid #3a3a5c;
+    background: #253623;
+    transition: background 0.2s, color 0.2s;
+    font-weight: 500;
+}
+
+.pagination a:hover {
+    background: #5c3a54;
+    color: #fff;
+}
+
+.pagination .active {
+    background: #7ecbff;
+    color: #232336;
+    pointer-events: none;
+    border: 1px solid #7ecbff;
+}
+
+.pagination .disabled {
+    color: #888;
+    border: 1px solid #232336;
+    background: #232336;
+    pointer-events: none;
+}
