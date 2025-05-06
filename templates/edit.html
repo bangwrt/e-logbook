@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/input.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ url_for('static', filename='js/edit.js') }}" defer></script>
+</head>
+<body>
+    <h1>Edit Data</h1>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const noInput = document.getElementById("no");
+
+
+
+});
+</script>
+
+<!-- Form untuk menambah data -->
+<form id="input-form" class="form-input" method="POST" action="/edit/{{ data[0] }}">
+    <div class="form-row">
+        <input type="text" id="no" name="no" value="{{ data[0] }}" readonly>
+        <label for="no">No</label>
+    </div>
+    <div class="form-row">
+        <select id="id" name="id" required>
+            {% for user in users %}
+                <option value="{{ user }}" {% if data[1] == user %}selected{% endif %}>{{ user }}</option>
+            {% endfor %}
+        </select>
+        <label for="id">ID</label>
+    </div>
+    <div class="form-row">
+        <input type="text" id="detail" name="detail" value="{{ data[2] }}" required>
+        <label for="detail">Detail</label>
+    </div>
+    <div class="form-row">
+        <textarea id="note" name="note">{{ data[3] }}</textarea>
+        <label for="note">Note</label>
+    </div>
+    <div class="form-row">
+        <input type="date" id="created" name="created" value="{{ data[4] }}" required>
+        <label for="created">Created</label>
+    </div>
+    <div class="form-row">
+        <input type="time" id="in_time" name="in_time" value="{{ data[5] }}" required>
+        <label for="in_time">In</label>
+    </div>
+    <div class="form-row">
+        <select id="status" name="status" required>
+            <option value="To Do" {% if data[6] == 'To Do' %}selected{% endif %}>To Do</option>
+            <option value="Done" {% if data[6] == 'Done' %}selected{% endif %}>Done</option>
+        </select>
+        <label for="status">Status</label>
+    </div>
+    <div class="form-row">
+        <input type="text" id="by" name="by" value="{{ data[7] }}" required>
+        <label for="by">By</label>
+    </div>
+    <div class="form-row">
+        <input type="date" id="completed" name="completed" value="{{ data[8] }}">
+        <label for="completed">Completed</label>
+    </div>
+    <div class="form-row">
+        <input type="time" id="out_time" name="out_time" value="{{ data[9] }}">
+        <label for="out_time">Out</label>
+    </div>
+    <div class="form-actions">
+        <button type="submit" id="submit-button">Submit</button>
+        <button type="button" id="cancel-button" onclick="window.location.href='/'">Cancel</button>
+    </div>
+</form>
+
+</body>
+</html>
