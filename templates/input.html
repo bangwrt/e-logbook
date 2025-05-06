@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/input.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ url_for('static', filename='js/input.js') }}" defer></script>
+</head>
+<body>
+    <h1>Add Data</h1>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const noInput = document.getElementById("no");
+});
+</script>
+
+<!-- Form untuk menambah data -->
+<form id="input-form" class="form-input" method="POST" action="/input">
+    <div class="form-row">
+        <input type="text" id="no" name="no" readonly placeholder=" ">
+        <label for="no">No</label>
+    </div>
+    <div class="form-row">
+        <input type="text" id="id" name="id" value="{{ user_login }}" readonly required>
+        <label for="id">ID</label>
+    </div>
+    <div class="form-row">
+        <input type="text" id="detail" name="detail" placeholder=" " required>
+        <label for="detail">Detail</label>
+    </div>
+    <div class="form-row">
+        <textarea id="note" name="note" placeholder=" "></textarea>
+        <label for="note">Note</label>
+    </div>
+    <div class="form-row">
+        <input type="date" id="created" name="created" placeholder=" " required>
+        <label for="created">Created</label>
+    </div>
+    <div class="form-row">
+        <input type="time" id="in_time" name="in_time" placeholder=" " required>
+        <label for="in_time">In</label>
+    </div>
+    <div class="form-row">
+        <select id="status" name="status" required>
+            <option value="To Do" selected>To Do</option>
+            <option value="Done">Done</option>
+        </select>
+        <label for="status">Status</label>
+    </div>
+    <div class="form-row">
+        <input type="text" id="by" name="by" placeholder=" ">
+        <label for="by">By</label>
+    </div>
+    <div class="form-row">
+        <input type="date" id="completed" name="completed" placeholder=" ">
+        <label for="completed">Completed</label>
+    </div>
+    <div class="form-row">
+        <input type="time" id="out_time" name="out_time" placeholder=" ">
+        <label for="out_time">Out</label>
+    </div>
+    <div class="form-actions">
+        <button type="submit" id="submit-button">Submit</button>
+        <button type="button" id="cancel-button" onclick="window.location.href='/'">Cancel</button>
+    </div>
+</form>
+
+</body>
+</html>
