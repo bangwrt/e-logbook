@@ -1,0 +1,163 @@
+/* Reset styles */
+body, h1, form, label, input, textarea, select, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e2f; /* Soft dark background */
+    color: #dcdcdc; /* Light gray text */
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Header styling */
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #4CAF50; /* Soft green for the title */
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #2e2e3e; /* Dark form background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Form-row styling */
+.form-row {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+label {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    font-size: 1rem;
+    color: #888; /* Soft gray for label */
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: #4CAF50; /* Soft green for active label */
+}
+
+input[readonly] + label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: #4CAF50; /* Soft green for readonly input */
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 15px 10px 10px 10px;
+    border: 1px solid #444; /* Dark border */
+    border-radius: 5px;
+    background-color: #2e2e3e; /* Dark input background */
+    color: #dcdcdc; /* Light gray text */
+    font-size: 1rem;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #4CAF50; /* Highlight border on focus */
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#submit-button {
+    background-color: #4CAF50; /* Soft green */
+    color: white;
+}
+
+#submit-button:hover {
+    background-color: #45a049; /* Slightly darker green */
+}
+
+#cancel-button {
+    background-color: #e74c3c; /* Soft red */
+    color: white;
+    margin-left: 10px;
+}
+
+#cancel-button:hover {
+    background-color: #c0392b; /* Slightly darker red */
+}
+
+/* Form actions styling */
+.form-actions {
+    text-align: right;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #cancel-button {
+        margin-left: 0;
+    }
+}
+
+/* Tambahkan aturan untuk textarea dan select */
+textarea:focus + label,
+textarea:not(:placeholder-shown) + label,
+select:focus + label,
+select:not([value=""]) + label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: #4CAF50; /* Soft green for active label */
+}
+
+/* Pastikan select memiliki gaya yang sesuai */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #2e2e3e; /* Dark input background */
+    color: #dcdcdc; /* Light gray text */
+    padding: 15px 10px;
+    border: 1px solid #444; /* Dark border */
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+select:focus {
+    outline: none;
+    border-color: #4CAF50; /* Highlight border on focus */
+}
