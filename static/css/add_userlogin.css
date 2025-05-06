@@ -1,0 +1,96 @@
+/* General Styles */
+body {
+    background-color: #2c2f33; /* Soft dark background */
+    color: #f5f5f5; /* Light text color */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container */
+.container {
+    background-color: #232a25; /* Slightly darker background for the form */
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Heading */
+.container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #209902;
+}
+
+/* Form Row */
+.form-row {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #209902; /* Softer text color for labels */
+}
+
+.form-row input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #40444b;
+    border-radius: 5px;
+    background-color: #2c2f33;
+    color: #f5f5f5;
+    font-size: 14px;
+}
+
+.form-row input::placeholder {
+    color: #72767d; /* Placeholder text color */
+}
+
+.form-row input:focus {
+    outline: none;
+    border-color: #7289da; /* Highlight color on focus */
+}
+
+/* Buttons */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn {
+    background-color: #7289da; /* Primary button color */
+    color: #ffffff;
+}
+
+.btn.cancel {
+    background-color: #f04747; /* Cancel button color */
+    color: #ffffff;
+}
